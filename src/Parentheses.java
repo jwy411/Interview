@@ -11,37 +11,25 @@ public class Parentheses {
 
 	public static ArrayList<String> generateParenthesis(int A) {
 		ArrayList<String> results = new ArrayList<>();
-		add(results, "", true, A);
+		add(results, "", true, A, 0, 0);
 		return results;
 	}
 
-	private static void add(List<String> results, String result, boolean isOpen, int n) {
+	private static void add(List<String> results, String result, boolean isOpen, int n, int open, int close) {
 		if (isOpen) {
 			result += '(';
+			open++;
 		} else {
 			result += ')';
-		}
-
-		int open = 0;
-		int close = 0;
-
-		for (int i = 0; i < result.length(); i++) {
-			if (result.charAt(i) == '(') {
-				open++;
-			}
-			if (result.charAt(i) == ')') {
-				close++;
-			}
+			close++;
 		}
 
 		if (open < n) {
-			add(results, result, true, n);
+			add(results, result, true, n, open, close);
 		}
 
-		if (close < n) {
-			if (open > close) {
-				add(results, result, false, n);
-			}
+		if (open > close && close < n) {
+			add(results, result, false, n, open, close);
 		}
 
 		if (open == n && close == n) {
