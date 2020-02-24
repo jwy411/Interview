@@ -7,15 +7,19 @@
  */
 public class VerifyPrime {
 	public static void main(String[] args) {
-		System.out.println(isPrime(1231322131));
+		long startTimeMills = System.currentTimeMillis();
+		int result = isPrime(2305843009213693951L);
+		long endTimeMills = System.currentTimeMillis();
+
+		System.out.println(result + "\t" + (endTimeMills - startTimeMills));
 	}
 
-	public static int isPrime(int A) {
+	public static int isPrime(long A) {
 		if (A == 1) {
 			return 0;
 		}
 
-		for (int i = 2; i <= (int)Math.sqrt(A); i++) {
+		for (long i = 2; i <= (long)Math.sqrt(A); i++) {
 			if (A % i == 0) {
 				return 0;
 			}
