@@ -2,7 +2,11 @@ import java.util.ArrayList;
 
 public class PrimeNumbers {
 	public static void main(String[] args) {
-		System.out.println(sieve(25));
+		long startTimeMills = System.currentTimeMillis();
+		ArrayList<Integer> results = sieve(1000000000);
+		long endTimeMills = System.currentTimeMillis();
+
+		System.out.println((endTimeMills - startTimeMills));
 	}
 
 	public static ArrayList<Integer> sieve(int A) {
